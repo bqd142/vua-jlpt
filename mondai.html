@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>VUA JLPT - Luyện Theo Phần</title>
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">VUA <span>JLPT</span></a>
+        <div class="nav-links">
+            <span id="exam-title-display" style="font-weight: bold; margin-right: 20px;">Đang tải dữ liệu...</span>
+            <a href="index.html">🏠 Thoát</a>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="question-palette" id="question-palette"></div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="timer" id="timer-display" style="color: var(--secondary-color); font-weight: bold; font-size: 20px;"></div>
+                <div>
+                    <button class="btn-clear" id="btn-clear">🗑️ Xóa Câu trả lời</button>
+                    <button class="btn-submit" id="btn-submit">Nộp Bài</button>
+                </div>
+            </header>
+
+            <section class="exam-area" id="exam-content-area">
+                </section>
+        </main>
+    </div>
+
+    <script src="js/services/DataService.js"></script>
+    <script src="js/services/StorageService.js"></script>
+    <script src="js/services/AIService.js"></script>
+    <script src="js/components/QuestionCard.js"></script>
+    <script src="js/components/ExplanationUi.js"></script>
+    <script src="js/components/ModalUI.js"></script>
+    <script src="js/pages/mondaiMode.js"></script>
+</body>
+</html>

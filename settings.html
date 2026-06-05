@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>VUA JLPT - Cài đặt</title>
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <style>
+        .settings-container { max-width: 600px; margin: 0 auto; }
+        .panel { background: var(--panel-bg); padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; }
+        .btn { padding: 10px 15px; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; }
+        .btn-danger { background: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">VUA <span>JLPT</span></a>
+        <div class="nav-links">
+            <a href="index.html">🏠 Trang chủ</a>
+            <a href="settings.html" style="color: var(--secondary-color);">⚙️ Cài đặt hệ thống</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <div class="settings-container">
+            <h2 style="margin-bottom: 20px;">Cài đặt hệ thống</h2>
+            
+            <div class="panel">
+                <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">✨ Cấu Hình AI (Google Gemini)</h3>
+                <div class="form-group">
+                    <label>API Key</label>
+                    <input type="password" id="api-key-input" placeholder="Nhập API Key của bạn tại đây...">
+                </div>
+                <button class="btn" id="btn-save-key">Lưu Cấu Hình</button>
+                <p id="key-status" style="margin-top: 15px; font-size: 14px; text-align: center;"></p>
+            </div>
+            <div class="settings-card" style="background: var(--panel-bg); padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: 30px; text-align: center; border: 1px solid var(--border-color);">
+                <h2 style="color: var(--primary-color); margin-bottom: 10px; font-size: 20px;">☕ Ủng hộ tác giả</h2>
+                <p style="margin-bottom: 20px; color: var(--text-main); font-size: 15px; line-height: 1.5;">
+                    Nếu bạn thấy hệ thống luyện thi hữu ích, hãy mời tác giả một ly cà phê để có thêm động lực duy trì server và phát triển thêm nhiều tính năng mới nhé!
+                </p>
+                
+                <div style="display: inline-block; padding: 10px; background: white; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px;">
+                    <img src="assets/images/qr.jpg" alt="Mã QR Donate" style="width: 220px; max-width: 100%; display: block; border-radius: 4px;">
+                </div>
+                
+                
+            </div>
+
+            <div class="panel">
+                <h3 style="margin-bottom: 20px; color: var(--accent-color);">🗑️ Quản Lý Dữ Liệu</h3>
+                <p style="font-size: 14px; margin-bottom: 15px; line-height: 1.6;">Thao tác này sẽ xóa toàn bộ lịch sử làm bài, điểm số và API Key hiện tại trên trình duyệt. Không thể khôi phục sau khi xóa.</p>
+                <button class="btn btn-danger" id="btn-clear-data">Xóa Toàn Bộ Dữ Liệu</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/services/StorageService.js"></script>
+    <script src="js/pages/settings.js"></script>
+    <script src="js/components/ModalUI.js"></script>
+</body>
+</html>

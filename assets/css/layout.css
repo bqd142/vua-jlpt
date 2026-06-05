@@ -1,0 +1,297 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Cột bên trái: Danh sách câu hỏi (Question Palette) */
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--panel-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  height: var(--header-height);
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.question-palette {
+  padding: 15px;
+  overflow-y: auto;
+  display: block; /* Sửa grid thành block */
+}
+
+.q-box {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.q-box:hover {
+  background-color: var(--border-color);
+}
+
+.q-box.answered {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+/* Vùng chính: Nội dung bài thi */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+}
+
+.top-bar {
+  height: var(--header-height);
+  background-color: var(--panel-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.btn-submit {
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Khu vực hiển thị nội dung câu hỏi (hỗ trợ chia đôi màn hình cho phần Dokkai) */
+.exam-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: block;
+  gap: 20px;
+}
+
+/* Giao diện Single / Default */
+.question-container {
+  background: var(--panel-bg);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Giao diện Split-screen cho Passage (Dokkai) */
+.split-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start; /* Giúp bài đọc không bị kéo giãn vô lý */
+}
+
+.split-layout .passage-panel {
+  flex: 1;
+  position: sticky;
+  top: 0; /* Bài đọc sẽ đứng im khi cuộn câu hỏi */
+  max-height: calc(100vh - 120px); /* Vừa vặn với chiều cao màn hình trừ đi Header */
+  overflow-y: auto;
+  background: var(--panel-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.split-layout .questions-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.option-row {
+  margin: 15px 0;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.option-label:hover {
+  background: #f8f9fa;
+}
+
+.option-label input {
+  margin-right: 15px;
+}
+
+.ai-explain-btn {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+:root {
+  --navbar-height: 60px;
+}
+
+/* --- Navbar VUA JLPT --- */
+.navbar {
+  height: var(--navbar-height);
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav-brand {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-brand span {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--secondary-color);
+}
+
+/* --- Sửa lại Layout tổng để chừa chỗ cho Navbar --- */
+.app-container, .dashboard-wrapper {
+  margin-top: var(--navbar-height); /* Đẩy nội dung xuống dưới Navbar */
+  height: calc(100vh - var(--navbar-height));
+}
+
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+.mondai-anchor-btn {
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  transition: opacity 0.2s;
+  flex: 1 1 calc(50% - 5px); /* Chia 2 cột cho các nút Mondai */
+  text-align: center;
+}
+.mondai-anchor-btn:hover {
+  opacity: 0.8;
+}
+
+/* --- Tối ưu kích thước ô câu hỏi trong Sidebar --- */
+.q-box {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; /* Thu nhỏ font */
+    padding: 2px;    /* Giảm padding */
+    transition: all 0.2s;
+}
+
+/* --- Trạng thái chấm điểm cho Sidebar --- */
+.q-box.correct {
+    background-color: #2ecc71 !important;
+    color: white !important;
+    border-color: #27ae60 !important;
+}
+
+.q-box.wrong {
+    background-color: #e74c3c !important;
+    color: white !important;
+    border-color: #c0392b !important;
+}
+
+/* --- Trạng thái chấm điểm cho Nội dung câu hỏi --- */
+.option-label.correct-answer {
+    background-color: #e8f8f5 !important;
+    border-color: #2ecc71 !important;
+    color: #27ae60 !important;
+}
+
+.option-label.wrong-answer {
+    background-color: #ffeaea !important;
+    border-color: #e74c3c !important;
+    color: #c0392b !important;
+}
+
+.score-display {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}

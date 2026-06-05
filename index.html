@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>VUA JLPT - Dashboard</title>
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        .panel { background: var(--panel-bg); padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .stat-card { border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .score-badge { background: var(--secondary-color); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 18px; }
+        .exam-item { display: block; padding: 15px; background: #f8f9fa; margin-bottom: 10px; border-radius: 4px; text-decoration: none; color: var(--primary-color); font-weight: bold; border-left: 4px solid var(--secondary-color); }
+        .exam-item:hover { background: #e9ecef; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">VUA <span>JLPT</span></a>
+        <div class="nav-links">
+            <a href="index.html">🏠 Trang chủ</a>
+            <a href="settings.html">⚙️ Cài đặt hệ thống</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-grid" style="grid-template-columns: 1fr;"> <!-- Sửa lại 1 cột cho thoáng -->
+            
+            <!-- Khối 1: Luyện Full Đề -->
+            <section class="feature-section">
+                <h2>📚 Luyện Full Đề JLPT</h2>
+                <div id="exam-list-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                    <!-- JS render danh sách đề -->
+                </div>
+            </section>
+
+            <!-- Khối 2: Luyện Theo Chuyên Đề Tổng Hợp -->
+            <section class="feature-section">
+                <h2>🎯 Luyện Tập Theo Từng Mondai (Tổng hợp tất cả các đề)</h2>
+                <div class="mondai-grid">
+                    <a href="mondai.html?section=moji_goi" class="mondai-card">📝 Chữ Hán & Từ Vựng</a>
+                    <a href="mondai.html?section=bunpou" class="mondai-card">🔗 Ngữ Pháp</a>
+                    <a href="mondai.html?section=dokkai" class="mondai-card">📖 Đọc Hiểu</a>
+                    <a href="mondai.html?section=choukai" class="mondai-card">🎧 Nghe Hiểu</a>
+                </div>
+            </section>
+
+            <!-- Khối 3: Flashcard -->
+            <section class="feature-section">
+                <h2>🎴 Flashcard Từ Vựng</h2>
+                <div class="flashcard-placeholder">
+                    🚀 Tính năng Flashcard đang được xây dựng...
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="js/services/DataService.js"></script>
+    <script src="js/services/StorageService.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/components/ModalUI.js"></script>
+</body>
+</html>

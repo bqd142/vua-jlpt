@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden; /* Chống cuộn toàn trang, chỉ cuộn ở từng vùng nội dung */
+}
+/* Styling cho các khối tính năng ở Dashboard */
+.feature-section {
+    margin-bottom: 40px;
+    background: var(--panel-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.feature-section h2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bg-color);
+    color: var(--primary-color);
+}
+
+.mondai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.mondai-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.mondai-card:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.flashcard-placeholder {
+    height: 150px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: bold;
+    background: #fafafa;
+}
+
+/* Nút Xóa làm lại */
+.btn-clear {
+    padding: 8px 20px;
+    background-color: var(--border-color);
+    color: var(--text-main);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: background 0.2s;
+}
+.btn-clear:hover { background-color: #dcdde1; }
+
+/* Custom Modal (Popup) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-box {
+    background: var(--panel-bg);
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal-box { transform: translateY(0); }
+.modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: var(--primary-color); }
+.modal-content { font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.btn-modal { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.btn-modal-cancel { background: #ecf0f1; color: var(--text-main); }
+.btn-modal-confirm { background: var(--accent-color); color: white; }
+.btn-modal-ok { background: var(--secondary-color); color: white; }
