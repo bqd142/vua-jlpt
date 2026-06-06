@@ -9,8 +9,12 @@
   width: var(--sidebar-width);
   background-color: var(--panel-bg);
   border-right: 1px solid var(--border-color);
+
   display: flex;
   flex-direction: column;
+
+  height: 100%;
+  overflow: hidden;
 }
 
 .sidebar-header {
@@ -24,9 +28,10 @@
 }
 
 .question-palette {
+  flex: 1;
   padding: 15px;
   overflow-y: auto;
-  display: block; /* Sửa grid thành block */
+  display: block;
 }
 
 .q-box {

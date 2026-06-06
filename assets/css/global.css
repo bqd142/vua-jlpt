@@ -107,6 +107,11 @@ body {
     transform: translateY(-20px);
     transition: transform 0.3s ease;
 }
+section,
+.mondai-section,
+.q-item {
+    scroll-margin-top: 0;
+}
 .modal-overlay.active .modal-box { transform: translateY(0); }
 .modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: var(--primary-color); }
 .modal-content { font-size: 15px; margin-bottom: 25px; line-height: 1.5; }

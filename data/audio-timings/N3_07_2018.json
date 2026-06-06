@@ -1,0 +1,117 @@
+{
+  "examCode": "N3_07_2018",
+  "questions": {
+    "q_choukai_m1_1": {
+      "start": "02:09",
+      "end": "03:24"
+    },
+    "q_choukai_m1_2": {
+      "start": "03:24",
+      "end": "04:45"
+    },
+    "q_choukai_m1_3": {
+      "start": "04:45",
+      "end": "06:15"
+    },
+    "q_choukai_m1_4": {
+      "start": "06:15",
+      "end": "07:59"
+    },
+    "q_choukai_m1_5": {
+      "start": "07:59",
+      "end": "09:17"
+    },
+    "q_choukai_m1_6": {
+      "start": "09:17",
+      "end": "10:36"
+    },
+    "q_choukai_m2_1": {
+      "start": "11:17",
+      "end": "12:48"
+    },
+    "q_choukai_m2_2": {
+      "start": "12:48",
+      "end": "14:29"
+    },
+    "q_choukai_m2_3": {
+      "start": "14:29",
+      "end": "16:19"
+    },
+    "q_choukai_m2_4": {
+      "start": "16:19",
+      "end": "18:05"
+    },
+    "q_choukai_m2_5": {
+      "start": "18:05",
+      "end": "19:58"
+    },
+    "q_choukai_m2_6": {
+      "start": "19:58",
+      "end": "22:11"
+    },
+    "q_choukai_m3_1": {
+      "start": "23:42",
+      "end": "25:22"
+    },
+    "q_choukai_m3_2": {
+      "start": "25:22",
+      "end": "27:06"
+    },
+    "q_choukai_m3_3": {
+      "start": "27:06",
+      "end": "28:33"
+    },
+    "q_choukai_m4_1": {
+      "start": "29:05",
+      "end": "29:42"
+    },
+    "q_choukai_m4_2": {
+      "start": "29:42",
+      "end": "30:00"
+    },
+    "q_choukai_m4_3": {
+      "start": "30:23",
+      "end": "30:50"
+    },
+    "q_choukai_m4_4": {
+      "start": "31:00",
+      "end": "31:30"
+    },
+    "q_choukai_m5_1": {
+      "start": "32:23",
+      "end": "32:55"
+    },
+    "q_choukai_m5_2": {
+      "start": "33:00",
+      "end": "33:26"
+    },
+    "q_choukai_m5_3": {
+      "start": "33:27",
+      "end": "34:00"
+    },
+    "q_choukai_m5_4": {
+      "start": "34:08",
+      "end": "34:34"
+    },
+    "q_choukai_m5_5": {
+      "start": "34:40",
+      "end": "35:07"
+    },
+    "q_choukai_m5_6": {
+      "start": "35:15",
+      "end": "35:40"
+    },
+    "q_choukai_m5_7": {
+      "start": "35:45",
+      "end": "36:13"
+    },
+    "q_choukai_m5_8": {
+      "start": "36:20",
+      "end": "36:45"
+    },
+    "q_choukai_m5_9": {
+      "start": "36:45",
+      "end": "37:20"
+    }
+  }
+}

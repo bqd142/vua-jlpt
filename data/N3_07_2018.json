@@ -1151,7 +1151,7 @@
           {"id": 3, "text": "かばん一つとしょるい"},
           {"id": 4, "text": "しょるい"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m1_2",
@@ -1165,7 +1165,7 @@
           {"id": 3, "text": "ポスターにのせる写真をえらぶ"},
           {"id": 4, "text": "ポスターをいんさつする"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m1_3",
@@ -1179,7 +1179,7 @@
           {"id": 3, "text": "正月のふくをりょうしんに送ってもらう"},
           {"id": 4, "text": "正月のふくの写真を用意する"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m1_4",
@@ -1193,7 +1193,7 @@
           {"id": 3, "text": "しょうひんせつめい"},
           {"id": 4, "text": "してんのれんらくさき"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m1_5",
@@ -1207,7 +1207,7 @@
           {"id": 3, "text": "わりびきけんをくばる"},
           {"id": 4, "text": "メニューをくばる"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m1_6",
@@ -1221,7 +1221,7 @@
           {"id": 3, "text": "ぶちょうにれんらくする"},
           {"id": 4, "text": "飲み物を買う"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       }
     ]
   },
@@ -1244,7 +1244,7 @@
           {"id": 3, "text": "インターネットのサイトで知り合った"},
           {"id": 4, "text": "スキー教室で知り合った"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m2_2",
@@ -1258,7 +1258,7 @@
           {"id": 3, "text": "ながいきょりを泳ぎたいから"},
           {"id": 4, "text": "友だちを作りたいから"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m2_3",
@@ -1272,7 +1272,7 @@
           {"id": 3, "text": "けんさつかん"},
           {"id": 4, "text": "医者"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m2_4",
@@ -1286,7 +1286,7 @@
           {"id": 3, "text": "会社の人と夕飯を食べに行くから"},
           {"id": 4, "text": "買い物をして帰るから"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m2_5",
@@ -1300,7 +1300,7 @@
           {"id": 3, "text": "好きな歌手のCD"},
           {"id": 4, "text": "自分への手紙"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m2_6",
@@ -1314,7 +1314,7 @@
           {"id": 3, "text": "国のことばを教え合う"},
           {"id": 4, "text": "日本語の歌を歌う"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       }
     ]
   },
@@ -1337,7 +1337,7 @@
           {"id": 3, "text": ""},
           {"id": 4, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m3_2",
@@ -1351,7 +1351,7 @@
           {"id": 3, "text": ""},
           {"id": 4, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m3_3",
@@ -1365,7 +1365,7 @@
           {"id": 3, "text": ""},
           {"id": 4, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       }
     ]
   },
@@ -1387,7 +1387,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m4_2",
@@ -1400,7 +1400,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m4_3",
@@ -1413,7 +1413,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m4_4",
@@ -1426,7 +1426,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       }
     ]
   },
@@ -1448,7 +1448,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_2",
@@ -1461,7 +1461,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_3",
@@ -1474,7 +1474,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m5_4",
@@ -1487,7 +1487,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_5",
@@ -1500,7 +1500,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_6",
@@ -1513,7 +1513,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m5_7",
@@ -1526,7 +1526,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m5_8",
@@ -1539,7 +1539,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_9",
@@ -1552,7 +1552,7 @@
           {"id": 2, "text": ""},
           {"id": 3, "text": ""}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       }
     ]
   }

@@ -17,6 +17,9 @@
         .score-badge { background: var(--secondary-color); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 18px; }
         .exam-item { display: block; padding: 15px; background: #f8f9fa; margin-bottom: 10px; border-radius: 4px; text-decoration: none; color: var(--primary-color); font-weight: bold; border-left: 4px solid var(--secondary-color); }
         .exam-item:hover { background: #e9ecef; }
+        
+        /* Cập nhật CSS cho các khối ngang */
+        .feature-section { margin-bottom: 30px; }
     </style>
 </head>
 <body>
@@ -28,42 +31,95 @@
         </div>
     </nav>
 
-    <div class="dashboard-wrapper">
-        <div class="dashboard-grid" style="grid-template-columns: 1fr;"> <!-- Sửa lại 1 cột cho thoáng -->
+    <div class="dashboard-wrapper" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+        <div class="dashboard-grid" style="grid-template-columns: 1fr;"> 
             
-            <!-- Khối 1: Luyện Full Đề -->
             <section class="feature-section">
-                <h2>📚 Luyện Full Đề JLPT</h2>
+                <h2 style="color: var(--primary-color); margin-bottom: 20px;">📚 Luyện Full Đề JLPT</h2>
                 <div id="exam-list-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
-                    <!-- JS render danh sách đề -->
-                </div>
+                    </div>
             </section>
 
-            <!-- Khối 2: Luyện Theo Chuyên Đề Tổng Hợp -->
             <section class="feature-section">
-                <h2>🎯 Luyện Tập Theo Từng Mondai (Tổng hợp tất cả các đề)</h2>
-                <div class="mondai-grid">
-                    <a href="mondai.html?section=moji_goi" class="mondai-card">📝 Chữ Hán & Từ Vựng</a>
-                    <a href="mondai.html?section=bunpou" class="mondai-card">🔗 Ngữ Pháp</a>
-                    <a href="mondai.html?section=dokkai" class="mondai-card">📖 Đọc Hiểu</a>
-                    <a href="mondai.html?section=choukai" class="mondai-card">🎧 Nghe Hiểu</a>
+                <h2 style="color: var(--primary-color); margin-bottom: 20px;">🎯 Luyện Tập Theo Từng Mondai</h2>
+                <div class="mondai-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <a href="mondai.html?section=moji_goi" class="exam-item" style="text-align: center; font-size: 16px;">📝 Chữ Hán & Từ Vựng</a>
+                    <a href="mondai.html?section=bunpou" class="exam-item" style="text-align: center; font-size: 16px;">🔗 Ngữ Pháp</a>
+                    <a href="mondai.html?section=dokkai" class="exam-item" style="text-align: center; font-size: 16px;">📖 Đọc Hiểu</a>
                 </div>
             </section>
 
-            <!-- Khối 3: Flashcard -->
-            <section class="feature-section">
-                <h2>🎴 Flashcard Từ Vựng</h2>
-                <div class="flashcard-placeholder">
-                    🚀 Tính năng Flashcard đang được xây dựng...
+<section class="feature-section" style="margin-top: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    
+                    <div onclick="openFullNotebook()" style="position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; height: 180px;">
+                        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80" alt="Sổ tay" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6);">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px; font-weight: bold; text-align: center; width: 100%;">
+                            📓 Sổ Tay
+                        </div>
+                    </div>
+
+                    <div onclick="alert('Tính năng Flashcard đang được phát triển!')" style="position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; height: 180px;">
+<img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80" alt="Flashcard" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6);">                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px; font-weight: bold; text-align: center; width: 100%;">
+                            🎴 Flashcard
+                        </div>
+                    </div>
+
                 </div>
             </section>
-
         </div>
     </div>
 
+    <div id="full-notebook-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; overflow-y: auto; padding: 20px;">
+        <div style="background: var(--panel-bg); max-width: 1000px; margin: 20px auto; border-radius: 12px; padding: 30px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <button onclick="document.getElementById('full-notebook-modal').style.display='none'" style="position: absolute; top: 15px; right: 20px; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--text-muted);">&times;</button>
+            <h2 style="color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px;">📓 Chi Tiết Sổ Tay Điểm Yếu</h2>
+            
+            <div id="notebook-full-content">
+                </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const flaggedQuestions = JSON.parse(localStorage.getItem('flagged_questions') || '{}');
+            const keys = Object.keys(flaggedQuestions);
+            const listContainer = document.getElementById('notebook-list-container');
+            
+            if (!listContainer) return;
+
+            if (keys.length === 0) {
+                listContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 30px; background: #f8f9fa; border-radius: 8px; border: 1px dashed var(--border-color);">Bạn chưa cắm cờ đánh dấu câu hỏi nào!</div>';
+                return;
+            }
+
+            let html = '';
+            keys.forEach(key => {
+                const parts = key.split('-');
+                const qId = parts.pop(); 
+                const examId = parts.join('-'); 
+                const examName = examId.replace(/_/g, ' ');
+
+                html += `
+                    <div style="padding: 15px; border: 1px solid var(--border-color); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div>
+                            <strong style="color: var(--primary-color); font-size: 15px;">${examName}</strong>
+                            <div style="font-size: 13px; color: var(--text-main); margin-top: 5px;">
+                                Mã câu hỏi: <span style="font-weight:bold; background: #e9ecef; padding: 3px 8px; border-radius: 4px;">${qId}</span>
+                            </div>
+                        </div>
+                        <a href="exam.html?id=${examId}#${key}" style="padding: 8px 15px; background: var(--secondary-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; transition: opacity 0.2s;">
+                            Làm lại ➔
+                        </a>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = html;
+        });
+    </script>
     <script src="js/services/DataService.js"></script>
     <script src="js/services/StorageService.js"></script>
-    <script src="js/pages/dashboard.js"></script>
+    <script src="js/components/QuestionCard.js"></script> 
+    <script src="js/pages/index.js"></script>
     <script src="js/components/ModalUI.js"></script>
 </body>
 </html>

@@ -206,4 +206,66 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Critical Error:", error);
         document.getElementById('exam-content-area').innerHTML = `<h2 style='color:red; text-align:center;'>Hệ thống lỗi. F12 để kiểm tra.</h2>`;
     }
+    document.addEventListener('click', function(e) {
+    // 1. XỬ LÝ SỰ KIỆN CLICK NÚT CẮM CỜ (.flag-btn)
+    const flagBtn = e.target.closest('.flag-btn');
+    if (flagBtn) {
+        const qid = flagBtn.getAttribute('data-qid');
+        let flaggedQuestions = JSON.parse(localStorage.getItem('flagged_questions') || '{}');
+        
+        if (flaggedQuestions[qid]) {
+            // Nếu đã cắm -> tiến hành Bỏ Cờ
+            delete flaggedQuestions[qid];
+            flagBtn.innerHTML = '🏳️ Đánh dấu';
+            flagBtn.style.background = 'transparent';
+            flagBtn.style.borderColor = '#d1d5db';
+            flagBtn.style.color = '#6b7280';
+            
+            // Tìm xóa cờ ở thanh sidebar trái
+            const paletteBox = document.getElementById(`palette-${qid}`);
+            if(paletteBox) {
+                const flagSpan = paletteBox.querySelector('.palette-flag');
+                if(flagSpan) flagSpan.remove();
+            }
+        } else {
+            // Nếu chưa cắm -> tiến hành Cắm Cờ
+            flaggedQuestions[qid] = true;
+            flagBtn.innerHTML = '🚩 Đã đánh dấu';
+            flagBtn.style.background = '#fee2e2';
+            flagBtn.style.borderColor = '#ef4444';
+            flagBtn.style.color = '#ef4444';
+            
+            // Tìm thêm cờ vào thanh sidebar trái
+            const paletteBox = document.getElementById(`palette-${qid}`);
+            if(paletteBox && !paletteBox.querySelector('.palette-flag')) {
+                paletteBox.insertAdjacentHTML('afterbegin', `<span class="palette-flag" style="position: absolute; top: -5px; right: -2px; font-size: 10px;">🚩</span>`);
+            }
+        }
+        
+        localStorage.setItem('flagged_questions', JSON.stringify(flaggedQuestions));
+        return; 
+    }
+
+    // 2. XỬ LÝ CLICK SỐ CÂU HỎI HOẶC NÚT SECTION ĐỂ CUỘN TRANG MƯỢT MÀ
+    if (e.target.classList.contains('q-box') || e.target.classList.contains('mondai-anchor-btn')) {
+        const targetId = e.target.getAttribute('data-target');
+        if (!targetId) return;
+        
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+});
+
+// 3. TỰ ĐỘNG TÔ MÀU XANH CHO MENU TRÁI KHI CHỌN ĐÁP ÁN (Dùng chung cho cả 2 trang)
+document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+        const qid = e.target.name; 
+        const paletteBox = document.getElementById(`palette-${qid}`);
+        if (paletteBox) {
+            paletteBox.classList.add('answered');
+        }
+    }
+});
 });

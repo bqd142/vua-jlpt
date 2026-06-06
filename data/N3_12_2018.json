@@ -1185,7 +1185,7 @@
           {"id": 3, "text": "山川駅に行く"},
           {"id": 4, "text": "山川駅に電話する"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m1_2",
@@ -1199,7 +1199,7 @@
           {"id": 3, "text": "人数を確認する"},
           {"id": 4, "text": "弁当の数をかえる"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m1_3",
@@ -1213,7 +1213,7 @@
           {"id": 3, "text": "3"},
           {"id": 4, "text": "4"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m1_4",
@@ -1227,7 +1227,7 @@
           {"id": 3, "text": "13,000円"},
           {"id": 4, "text": "15,000円"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m1_5",
@@ -1241,7 +1241,7 @@
           {"id": 3, "text": "アエ"},
           {"id": 4, "text": "ウエ"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m1_6",
@@ -1255,7 +1255,7 @@
           {"id": 3, "text": "山田さんの家"},
           {"id": 4, "text": "船の上"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       }
     ]
   },
@@ -1278,7 +1278,7 @@
           {"id": 3, "text": "奨学金のおうぼに間に合わないこと"},
           {"id": 4, "text": "体の調子がわるそうなこと"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m2_2",
@@ -1292,7 +1292,7 @@
           {"id": 3, "text": "全部のへやをたたみにかえたから"},
           {"id": 4, "text": "日本料理の教室を始めたから"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m2_3",
@@ -1306,7 +1306,7 @@
           {"id": 3, "text": "ごみにすをかける"},
           {"id": 4, "text": "ごみをにわにうめる"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m2_4",
@@ -1320,7 +1320,7 @@
           {"id": 3, "text": "息子にじしんをつけさせるため"},
           {"id": 4, "text": "家族との会話をふやすため"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m2_5",
@@ -1334,7 +1334,7 @@
           {"id": 3, "text": "ビザ屋のはいたつのピザを食べる"},
           {"id": 4, "text": "レストランの持ち帰りのピザを食べる"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       },
       {
         "questionId": "q_choukai_m2_6",
@@ -1348,7 +1348,7 @@
           {"id": 3, "text": "インクだいが安いから"},
           {"id": 4, "text": "紙を一度にたくさん入れておけるから"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 2
       }
     ]
   },
@@ -1366,7 +1366,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}, {"id": 4, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m3_2",
@@ -1375,7 +1375,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}, {"id": 4, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m3_3",
@@ -1384,7 +1384,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}, {"id": 4, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 4
       }
     ]
   },
@@ -1402,7 +1402,7 @@
         "questionAudioTiming": null,
         "imageUrl": "image_m4_1",
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m4_2",
@@ -1411,7 +1411,7 @@
         "questionAudioTiming": null,
         "imageUrl": "image_m4_2",
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m4_3",
@@ -1420,7 +1420,7 @@
         "questionAudioTiming": null,
         "imageUrl": "image_m4_3",
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m4_4",
@@ -1429,7 +1429,7 @@
         "questionAudioTiming": null,
         "imageUrl": "image_m4_4",
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       }
     ]
   },
@@ -1447,7 +1447,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_2",
@@ -1456,7 +1456,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_3",
@@ -1465,7 +1465,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 3
       },
       {
         "questionId": "q_choukai_m5_4",
@@ -1474,7 +1474,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_5",
@@ -1483,7 +1483,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_6",
@@ -1492,7 +1492,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 2
       },
       {
         "questionId": "q_choukai_m5_7",
@@ -1501,7 +1501,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_8",
@@ -1510,7 +1510,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 1
       },
       {
         "questionId": "q_choukai_m5_9",
@@ -1519,7 +1519,7 @@
         "questionAudioTiming": null,
         "imageUrl": null,
         "options": [{"id": 1, "text": ""}, {"id": 2, "text": ""}, {"id": 3, "text": ""}],
-        "correctAnswer": null
+        "correctAnswer": 3
       }
     ]
   }
