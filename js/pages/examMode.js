@@ -68,6 +68,53 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (paletteContainer) paletteContainer.innerHTML = QuestionCard.renderPalette(dataToRender, savedAnswers);
 
+        // Sự kiện Nút Giải thích AI trong chế độ làm bài
+        document.getElementById('exam-content-area')?.addEventListener('click', async (e) => {
+            const target = e.target;
+            if (target.classList && target.classList.contains('ai-explain-btn')) {
+                const btn = target;
+                const qid = btn.getAttribute('data-qid');
+                const apiKey = StorageService.getApiKey();
+
+                if (!apiKey) {
+                    ModalUI.showAlert('Thiếu API Key', '⚠️ Vui lòng cấu hình API Key tại trang Cài đặt.');
+                    return;
+                }
+
+                let currentQ = null;
+                let passageData = null;
+                let sectionType = '';
+                let mondaiNumber = 0;
+
+                for (const mondai of dataToRender) {
+                    if (!mondai.questions) continue;
+                    const found = mondai.questions.find(q => q.questionId === qid);
+                    if (found) {
+                        currentQ = found;
+                        sectionType = mondai.section;
+                        mondaiNumber = mondai.mondai || 0;
+                        if (mondai.type === 'passage') passageData = mondai.passageData;
+                        break;
+                    }
+                }
+
+                if (!currentQ) return;
+
+                btn.disabled = true;
+                btn.style.opacity = '0.6';
+                ExplanationUi.renderLoading(qid);
+
+                try {
+                    const explanation = await AIService.explainQuestion(apiKey, currentQ, passageData, sectionType, mondaiNumber);
+                    ExplanationUi.renderResult(qid, explanation);
+                } catch (error) {
+                    ExplanationUi.renderError(qid, error.message || 'Lỗi khi gọi AI.');
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }
+            }
+        });
+
         // Tự động cuộn nếu mở từ Sổ tay
         if (window.location.hash) {
             setTimeout(() => {
