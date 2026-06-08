@@ -78,6 +78,82 @@ document.addEventListener('DOMContentLoaded', async () => {
             }, 500);
         }
 
+        // Nút Nộp bài: chấm điểm và hiển thị kết quả
+        const btnSubmit = document.getElementById('btn-submit');
+        if (btnSubmit) {
+            btnSubmit.addEventListener('click', () => {
+                if (btnSubmit.getAttribute('data-status') === 'done') {
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                let correctCount = 0, totalQuestions = 0;
+                document.querySelectorAll('.option-label').forEach(el => el.classList.remove('wrong-answer', 'correct-answer'));
+                document.querySelectorAll('.q-box').forEach(el => el.classList.remove('wrong', 'correct'));
+
+                const currentSaved = JSON.parse(localStorage.getItem(`answers_${examId}`) || '{}');
+
+                dataToRender.forEach(m => {
+                    if (!m.questions) return;
+                    m.questions.forEach(q => {
+                        totalQuestions++;
+                        const userSelected = currentSaved[q.questionId];
+                        const paletteBox = document.getElementById(`palette-${q.questionId}`);
+
+                        if (userSelected !== undefined && userSelected !== null && userSelected !== '') {
+                            const selectedInput = document.querySelector(`input[name="${q.questionId}"][value="${userSelected}"]`);
+                            const correctInput = document.querySelector(`input[name="${q.questionId}"][value="${q.correctAnswer}"]`);
+                            if (userSelected == q.correctAnswer) {
+                                correctCount++;
+                                if (paletteBox) paletteBox.classList.add('correct');
+                                if (selectedInput) selectedInput.closest('.option-label').classList.add('correct-answer');
+                            } else {
+                                if (paletteBox) paletteBox.classList.add('wrong');
+                                if (selectedInput) selectedInput.closest('.option-label').classList.add('wrong-answer');
+                                if (correctInput) correctInput.closest('.option-label').classList.add('correct-answer');
+                            }
+                        } else if (paletteBox) {
+                            paletteBox.style.backgroundColor = "#f39c12"; paletteBox.style.color = "white";
+                        }
+                    });
+                });
+
+                let scoreDiv = document.getElementById('score-display');
+                if (!scoreDiv) {
+                    scoreDiv = document.createElement('div');
+                    scoreDiv.id = 'score-display';
+                    scoreDiv.className = 'score-display';
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar) sidebar.appendChild(scoreDiv); else document.body.appendChild(scoreDiv);
+                }
+                scoreDiv.innerHTML = `🏆 Điểm thi:<br>${correctCount} / ${totalQuestions}`;
+
+                document.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+                btnSubmit.innerText = "🏠 Về trang chủ";
+                btnSubmit.style.backgroundColor = "var(--secondary-color)";
+                btnSubmit.setAttribute('data-status', 'done');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Nút Xóa làm lại (xoá đáp án của đề thi hiện tại)
+        const btnClear = document.getElementById('btn-clear');
+        if (btnClear) {
+            btnClear.addEventListener('click', () => {
+                ModalUI.showConfirm(
+                    'Xác nhận xóa',
+                    'Bạn muốn xóa toàn bộ câu trả lời của đề thi này?',
+                    () => {
+                        localStorage.removeItem(`answers_${examId}`);
+                        // cập nhật palette nếu có
+                        const paletteContainer = document.getElementById('question-palette');
+                        if (paletteContainer) paletteContainer.innerHTML = QuestionCard.renderPalette(dataToRender, {});
+                        window.location.reload();
+                    }
+                );
+            });
+        }
+
     } catch (error) {
         console.error("Lỗi hệ thống khi khởi tạo đề thi:", error);
     }
@@ -175,8 +251,6 @@ if (playBtn) {
         localStorage.setItem('flagged_questions', JSON.stringify(flaggedQuestions));
         return; 
     }
-
-    // 2. Logic Cuộn trang thông minh (SỬA LỖI NHẢY KHỐI)
     const scrollBtn = e.target.closest('.q-box') || e.target.closest('.mondai-anchor-btn');
     
     if (scrollBtn) {
@@ -200,9 +274,6 @@ if (playBtn) {
     }
 });
 
-// ==========================================
-// PHẦN 3: LƯU TRẠNG THÁI ĐÁP ÁN
-// ==========================================
 document.addEventListener('change', function(e) {
     if (e.target.type === 'radio') {
         const qid = e.target.name; 

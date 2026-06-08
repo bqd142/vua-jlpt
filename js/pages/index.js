@@ -124,6 +124,7 @@ window.openFullNotebook = async function() {
             let examData = await res.json();
             let mondais = Array.isArray(examData) ? examData : (examData.mondais || examData.data);
             const savedAnswers = JSON.parse(localStorage.getItem(`answers_${examId}`) || '{}');
+            const timing = await DataService.getAudioTiming(examId);
 
             finalHtml += `<h3 style="margin-top: 30px; background: var(--primary-color); color: white; padding: 12px 20px; border-radius: 6px;">Đề: ${examId.replace(/_/g, ' ')}</h3>`;
 
@@ -147,7 +148,7 @@ window.openFullNotebook = async function() {
 
                     flaggedQsInMondai.forEach(q => {
                         finalHtml += `<div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed #eee;">`;
-                        finalHtml += QuestionCard.buildQuestionHTML(q, savedAnswers, examId);
+                        finalHtml += QuestionCard.buildQuestionHTML(q, savedAnswers, examId, mondai, timing);
                         finalHtml += `</div>`;
                     });
 

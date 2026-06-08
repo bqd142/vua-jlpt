@@ -24,5 +24,14 @@ const DataService = {
             console.error(`Lỗi khi tải đề thi ${examId}:`, error);
             return null;
         }
+    },
+    async getAudioTiming(examId) {
+        try {
+            const resp = await fetch(`data/audio-timings/${examId}.json`);
+            if (!resp.ok) return null;
+            return await resp.json();
+        } catch (e) {
+            return null;
+        }
     }
 };

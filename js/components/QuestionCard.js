@@ -121,10 +121,16 @@ const QuestionCard = {
                 </div>
             `;
             
+            // Determine correct audioTimingData for this mondai.
+            let mondaiAudio = null;
+            const isSingleAudioFile = audioTimingData && audioTimingData.questions;
+            if (isSingleAudioFile) mondaiAudio = audioTimingData;
+            else if (audioTimingData && mondai && mondai.examId && audioTimingData[mondai.examId]) mondaiAudio = audioTimingData[mondai.examId];
+
             if (mondai.type === 'passage') {
-                html += this.renderPassageLayout(mondai, savedAnswers, mondai.examId, headerHtml);
+                html += this.renderPassageLayout(mondai, savedAnswers, mondai.examId, headerHtml, mondaiAudio);
             } else {
-                html += headerHtml + this.renderSingleLayout(mondai, savedAnswers, mondai.examId, audioTimingData);
+                html += headerHtml + this.renderSingleLayout(mondai, savedAnswers, mondai.examId, mondaiAudio);
             }
             
             html += `</section><hr style="border-top: 3px solid var(--border-color); margin: 40px 0;">`;
@@ -142,7 +148,7 @@ const QuestionCard = {
     },
 
     // 4. Render khối Đọc hiểu (Sticky Header & Passage)
-    renderPassageLayout(mondai, savedAnswers, mondaiExamId = null, headerHtml = '') {
+    renderPassageLayout(mondai, savedAnswers, mondaiExamId = null, headerHtml = '', audioTimingData = null) {
         let passageHtml = `
             <div class="passage-panel" style="position: sticky; top: 80px; height: fit-content; max-height: calc(100vh - 100px); overflow-y: auto; background: var(--panel-bg); padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                 ${headerHtml}
@@ -153,7 +159,7 @@ const QuestionCard = {
         
         let questionsHtml = `<div class="questions-panel" style="display: flex; flex-direction: column; gap: 20px;">`;
         mondai.questions.forEach(q => {
-            questionsHtml += `<div class="question-container" style="background: var(--panel-bg); padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">${this.buildQuestionHTML(q, savedAnswers, mondaiExamId, mondai)}</div>`;
+            questionsHtml += `<div class="question-container" style="background: var(--panel-bg); padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">${this.buildQuestionHTML(q, savedAnswers, mondaiExamId, mondai, audioTimingData)}</div>`;
         });
         
         return `<div class="split-layout" style="display: flex; gap: 30px; align-items: flex-start;">${passageHtml}${questionsHtml}</div>`; 

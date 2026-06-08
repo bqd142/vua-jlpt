@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let aggregatedData = [];
         const allHistory = StorageService.getAllHistory() || {};
 
+        const audioTimingsMap = {};
         for (const exam of manifest) {
             try {
                 const rawData = await DataService.getExamData(exam.id);
@@ -43,6 +44,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
 
+        // Load audio timing files for each exam present (non-blocking but await each)
+        for (const exam of manifest) {
+            try {
+                const timing = await DataService.getAudioTiming(exam.id);
+                if (timing) audioTimingsMap[exam.id] = timing;
+            } catch (e) {
+                // ignore
+            }
+        }
+
         if (aggregatedData.length === 0) {
             examContentArea.innerHTML = "<h2 style='text-align:center; padding: 50px; color: var(--text-muted);'>Chưa có dữ liệu câu hỏi cho phần này.</h2>";
             return;
@@ -50,18 +61,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (examTitleDisplay) examTitleDisplay.innerText = `Luyện Chuyên Đề: ${sectionNames[sectionTarget] || sectionTarget}`;
 
-        // 2. Render Giao diện
+        // 2. Render Giao diện (pass audio timings map so choukai questions get per-question audio)
         paletteContainer.innerHTML = QuestionCard.renderPalette(aggregatedData, allHistory);
-        examContentArea.innerHTML = QuestionCard.renderFullExam(aggregatedData, allHistory);
+        examContentArea.innerHTML = QuestionCard.renderFullExam(aggregatedData, allHistory, audioTimingsMap);
 
         // 3. Sự kiện lưu đáp án
         examContentArea.addEventListener('change', (e) => {
             if (e.target.type === 'radio') {
-                const qId = e.target.name;
+                const inputName = e.target.name; // thường là "<examId>-<questionId>" khi có mondaiExamId
                 const originExamId = e.target.getAttribute('data-exam-id'); 
                 if (originExamId) {
-                    StorageService.saveAnswer(originExamId, qId, e.target.value);
-                    const uniqueQid = `${originExamId}-${qId}`;
+                    const prefix = `${originExamId}-`;
+                    const rawQid = inputName && inputName.startsWith(prefix) ? inputName.substring(prefix.length) : inputName;
+                    StorageService.saveAnswer(originExamId, rawQid, e.target.value);
+                    const uniqueQid = `${originExamId}-${rawQid}`;
                     const box = document.querySelector(`.q-box[data-target="${uniqueQid}"]`);
                     if (box) box.classList.add('answered');
                 }
@@ -83,6 +96,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     el.style.backgroundColor = "rgba(52, 152, 219, 0.1)";
                     setTimeout(() => el.style.backgroundColor = "transparent", 1000);
                 }
+                // Ngăn không cho document-level click handler xử lý tiếp (tránh cuộn kép khiến navbar che mất)
+                e.stopPropagation();
             }
         });
 
@@ -129,6 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 6. Xử lý Nút "Xóa làm lại"
         if (btnClear) {
             btnClear.addEventListener('click', () => {
+                console.log("CLEAR CLICKED");
                 ModalUI.showConfirm(
                     "Xác nhận xóa", 
                     "Bạn muốn xóa toàn bộ câu trả lời của chuyên đề này?", 
@@ -149,6 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 7. Nút Nộp bài và Chấm điểm
         if (btnSubmit) {
             btnSubmit.addEventListener('click', () => {
+                console.log("SUBMIT CLICKED");
                 if (btnSubmit.getAttribute('data-status') === 'done') {
                     window.location.href = 'index.html';
                     return;
@@ -162,14 +179,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const currentAns = StorageService.getSavedAnswers(m.examId) || {};
                     m.questions.forEach(q => {
                         totalQuestions++;
+                        // try to read saved answer by raw id; saved values are numbers
                         const userSelected = currentAns[q.questionId];
                         const uniqueQid = `${m.examId}-${q.questionId}`;
                         const qBox = document.querySelector(`.q-box[data-target="${uniqueQid}"]`);
                         
-                        if (userSelected) {
-                            const selectedInput = document.querySelector(`input[name="${q.questionId}"][data-exam-id="${m.examId}"][value="${userSelected}"]`);
-                            const correctInput = document.querySelector(`input[name="${q.questionId}"][data-exam-id="${m.examId}"][value="${q.correctAnswer}"]`);
-                            
+                        // treat 0 as a valid answer too — check against null/undefined
+                        if (userSelected !== undefined && userSelected !== null && userSelected !== '') {
+                            const selectedInput = document.querySelector(`input[name="${uniqueQid}"][data-exam-id="${m.examId}"][value="${userSelected}"]`);
+                            const correctInput = document.querySelector(`input[name="${uniqueQid}"][data-exam-id="${m.examId}"][value="${q.correctAnswer}"]`);
+                            console.log({
+    examId: m.examId,
+    qid: q.questionId,
+    userSelected,
+    correctAnswer: q.correctAnswer
+});
                             if (userSelected == q.correctAnswer) {
                                 correctCount++;
                                 if (qBox) qBox.classList.add('correct');
