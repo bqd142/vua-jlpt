@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Render ra màn hình
         renderExamList(exams);
+        initCountdown();
 
     } catch (error) {
         console.error("Lỗi tải danh sách đề thi:", error);
@@ -184,3 +185,85 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+// ==========================================
+// PHẦN 5: ĐẾM NGÀY TỚI KỲ THI (COUNTDOWN)
+// Lấy ngày mục tiêu từ localStorage key: 'jlpt_exam_date' (ISO string)
+// Nếu không có, hiển thị liên kết tới trang Cài đặt
+// ==========================================
+function initCountdown() {
+    const elDays = document.getElementById('countdown-days');
+    const elSub = document.getElementById('countdown-sub');
+    if (!elDays) return;
+    function firstSunday(year, monthIndex) {
+        // monthIndex: 0-based (6 = July, 11 = December)
+        const d = new Date(year, monthIndex, 1);
+        const day = d.getDay();
+        const delta = (7 - day) % 7; // days to add to reach Sunday
+        return new Date(year, monthIndex, 1 + delta);
+    }
+
+    function getNextScheduledExam(today) {
+        // allow manual override from localStorage
+        const override = localStorage.getItem('jlpt_exam_date');
+        if (override) {
+            const parsed = new Date(override);
+            if (!isNaN(parsed)) return parsed;
+        }
+
+        const y = today.getFullYear();
+        const jul = firstSunday(y, 6);
+        const dec = firstSunday(y, 11);
+
+        // normalize to start of day
+        const t0 = new Date(today); t0.setHours(0,0,0,0);
+        const jul0 = new Date(jul); jul0.setHours(0,0,0,0);
+        const dec0 = new Date(dec); dec0.setHours(0,0,0,0);
+
+        if (t0 <= jul0 && (jul0 <= dec0 || t0 <= dec0)) {
+            // before or on July
+            return jul0;
+        }
+
+        if (t0 <= dec0 && (dec0 <= jul0 || t0 > jul0)) {
+            return dec0;
+        }
+
+        // if passed both in this year, return next year's July
+        const nextJul = firstSunday(y + 1, 6);
+        nextJul.setHours(0,0,0,0);
+        return nextJul;
+    }
+
+    function update() {
+        const now = new Date();
+        const target = getNextScheduledExam(now);
+        if (!target || isNaN(target)) {
+            elDays.textContent = '—';
+            elSub.innerHTML = 'Không xác định được ngày thi. <a href="settings.html">Cài đặt</a>';
+            return;
+        }
+
+        const msPerDay = 1000 * 60 * 60 * 24;
+        const today0 = new Date(now); today0.setHours(0,0,0,0);
+        const diff = Math.ceil((target.getTime() - today0.getTime()) / msPerDay);
+
+        const month = target.getMonth() + 1;
+        const year = target.getFullYear();
+
+        if (diff > 0) {
+            elDays.textContent = diff;
+            elSub.textContent = `Còn ${diff} ngày tới kỳ thi (${month}/${year})`;
+        } else if (diff === 0) {
+            elDays.textContent = '0';
+            elSub.textContent = `Hôm nay là ngày thi (${month}/${year})! 頑張って！`;
+        } else {
+            // should not happen, but handle gracefully
+            elDays.textContent = Math.abs(diff);
+            elSub.textContent = `Kỳ thi (${month}/${year}) đã diễn ra cách đây ${Math.abs(diff)} ngày`;
+        }
+    }
+
+    update();
+    setInterval(update, 60 * 60 * 1000);
+}

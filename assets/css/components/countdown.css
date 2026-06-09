@@ -1,0 +1,9 @@
+.countdown-panel { display: flex; align-items: center; justify-content: center; padding: 18px; background: linear-gradient(90deg, rgba(99,102,241,0.06), rgba(99,102,241,0.03)); border: 1px solid var(--border-color); }
+.countdown-inner { text-align: center; }
+.countdown-meta { color: var(--text-muted); font-size: 13px; margin-bottom: 6px; }
+.countdown-days { font-size: 48px; font-weight: 800; color: var(--primary-color); line-height: 1; }
+.countdown-sub { color: var(--text-main); font-size: 14px; margin-top: 6px; }
+.countdown-sub a { color: var(--secondary-color); font-weight: 600; text-decoration: none; }
+@media (max-width: 600px) {
+  .countdown-days { font-size: 34px; }
+}

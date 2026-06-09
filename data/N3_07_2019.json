@@ -361,15 +361,15 @@
         "questionId": "q_25",
         "number": 25,
         "instruction": "( )に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。",
-        "content": "(問題の内容が不明です)",
+        "content": "道がよくわからなくて、辺りを（　　　）歩きまわってしまいました。",
         "highlight": "( )",
         "options": [
           {"id": 1, "text": "ぐらぐら"},
-          {"id": 2, "text": ""},
+          {"id": 2, "text": "ぺらぺら"},
           {"id": 3, "text": "とんとん"},
           {"id": 4, "text": "うろうろ"}
         ],
-        "correctAnswer": null
+        "correctAnswer": 4
       }
     ]
   },
@@ -765,7 +765,7 @@
           {"id": 3, "text": "知らせを聞いて"},
           {"id": 4, "text": "一番行きたがっていた"}
         ],
-        "correctAnswer": 1
+        "correctAnswer": 3
       },
       {
         "questionId": "q_17",
@@ -779,7 +779,7 @@
           {"id": 3, "text": "建ったことで"},
           {"id": 4, "text": "日が当たらなくなって"}
         ],
-        "correctAnswer": 4
+        "correctAnswer": 2
       },
       {
         "questionId": "q_18",

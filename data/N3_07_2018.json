@@ -707,7 +707,7 @@
           {"id": 3, "text": "にとって"},
           {"id": 4, "text": "いちばん大切"}
         ],
-        "correctAnswer": 4
+        "correctAnswer": 1
       },
       {
         "questionId": "q_bunpou_15",

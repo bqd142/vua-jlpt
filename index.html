@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components/countdown.css">
     <link rel="icon" href="assets/images/icon.ico">
     <style>
         .dashboard-grid {
@@ -32,7 +33,16 @@
         </div>
     </nav>
 
-    <div class="dashboard-wrapper" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    <div class="dashboard-wrapper">
+        <section class="feature-section">
+            <div id="countdown-panel" class="panel countdown-panel" style="margin-bottom:20px;">
+                <div class="countdown-inner">
+                    <div class="countdown-meta">⏳ Ngày tới kỳ thi</div>
+                    <div id="countdown-days" class="countdown-days">—</div>
+                    <div id="countdown-sub" class="countdown-sub">Chưa có ngày thi được thiết lập. <a href="settings.html">Cài đặt</a></div>
+                </div>
+            </div>
+        </section>
         <div class="dashboard-grid" style="grid-template-columns: 1fr;"> 
             
             <section class="feature-section">
